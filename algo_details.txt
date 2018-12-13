@@ -1,0 +1,33 @@
+algorithm: 
+this algo is for step 6 of Knuth's five-guess algorithm
+the goal is to apply minmax technique to determine the best possible guess
+final code may not follow this algo exactly (depends on data structures and language capabilities)
+it is unlikely that the first version will be the most computationally efficient algo, should be explored later
+written in pseudo-code similar to python
+
+minmax algo:
+    for each unused code:
+        for each code in S:
+            insert code into peg group (grouped by black/white peg hit count)
+
+        set maxHitCount = 0
+
+        for each group in peg group:
+            set grpHitCount = number of elements in group
+
+            if grpHitCount > maxHitCount:
+                set maxHitCount = grpHitCount
+
+        set minEliminated = count(S) - maxHitCount
+        listMinEliminated.add(minEliminated)
+
+    listBestGuesses = findMax(listMinEliminated)
+
+    if listBestGuesses contains multiple elements:
+        for each guess in listBestGuesses:
+            if guess in S:
+                set bestGuess = guess
+                break
+        set bestGuess = listBestGuesses[0]
+    else:
+        set bestGuess = listBestGuesses[0]
